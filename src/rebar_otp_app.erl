@@ -121,7 +121,8 @@ install(Config, File) ->
     ok = rebar_file_utils:mkdir_p(AppDir),
 
     %% By default we copy the ebin, include, src and priv directories (if they exist)
-    Files = [F || F <- ["ebin", "src", "priv", "include"],
+    Directories = lists:merge(["ebin", "src", "priv", "include"], rebar_config:get(Config, sub_dirs, [])),
+    Files = [F || F <- Directories,
                   filelib:last_modified(F) /= 0],
     ok = rebar_file_utils:cp_r(Files, AppDir),
 

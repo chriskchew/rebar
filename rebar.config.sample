@@ -103,5 +103,5 @@
 
 %% == Subdirectories ==
 
-%% Subdirectories?
+%% Subdirectories -- These are also copied to the target directory during install (along with ebin, priv, src, include)
 {sub_dirs, ["dir1", "dir2"]}.
